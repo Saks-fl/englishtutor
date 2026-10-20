@@ -1,0 +1,110 @@
+[2026.10.16 12:27:11] Launched version: 7002009, install beta: [FALSE], alpha: 0, debug mode: [FALSE]
+[2026.10.16 12:27:11] Executable dir: C:/Users/saks2/Downloads/, name: Telegram.exe
+[2026.10.16 12:27:11] Initial working dir: C:/Users/saks2/Downloads/
+[2026.10.16 12:27:11] Working dir: C:/Users/saks2/Downloads/
+[2026.10.16 12:27:11] Command line: C:\Users\saks2\Downloads\Telegram.exe
+[2026.10.16 12:27:11] Executable path before check: C:/Users/saks2/Downloads/Telegram.exe
+[2026.10.16 12:27:11] Logs started
+[2026.10.16 12:27:11] WinRT Supported: [TRUE]
+[2026.10.16 12:27:11] AppUserModelID: Telegram.TelegramDesktop.07168869f469f3eb36a0fb22d3456e3c
+[2026.10.16 12:27:11] Using DirectX compiler 'C:\Users\saks2\Downloads\modules\x64\d3d\d3dcompiler_47.dll'.
+[2026.10.16 12:27:11] Connecting local socket to Global\fec77cadeffc76a2d8f9bd36545feb37-{87A94AB0-E370-4cde-98D3-ACC110C5967D}...
+[2026.10.16 12:27:11] This is the only instance of Telegram, starting server and app...
+[2026.10.16 12:27:11] Moved logging from 'C:/Users/saks2/Downloads/log_start1.txt' to 'C:/Users/saks2/Downloads/log.txt'!
+[2026.10.16 12:27:11] Old start log 'log_start0.txt' found, deleted: [TRUE]
+[2026.10.16 12:27:11] Opened 'C:/Users/saks2/Downloads/tdata/working' for reading, the previous Telegram Desktop launch was not finished properly :( Crash log size: 0
+[2026.10.16 12:27:11] Global devicePixelRatio: 1
+[2026.10.16 12:27:11] QT_DPI_ADJUSTMENT_POLICY: AdjustDpi
+[2026.10.16 12:27:11] Primary screen DPI: 120, Base: 96.
+[2026.10.16 12:27:11] Computed screen scale: 125
+[2026.10.16 12:27:11] DevicePixelRatio: 1
+[2026.10.16 12:27:11] ScreenScale: 125
+[2026.10.16 12:27:11] Media Info: Type Playback, default: {0.0.0.00000000}.{0b12a1b0-e3d1-44e1-8fc7-7edf432538a6}, list: { "Speakers (Realtek(R) Audio)" <{0.0.0.00000000}.{0446d975-6fc2-4b37-9781-4e5cd952d888}>, "Headset Earphone (JBL Charge 3 Hands-Free)" <{0.0.0.00000000}.{09edff64-613c-4d30-b1d5-498cc1ba493a}>, "Speakers (Realtek(R) Audio)" <{0.0.0.00000000}.{0b12a1b0-e3d1-44e1-8fc7-7edf432538a6}>, "Headset Earphone (JBL Charge 3 Hands-Free)" <{0.0.0.00000000}.{15be2dde-b555-4a94-bb64-396b2a01f08b}>, "Headset (любит санечка Hands-Free)" <{0.0.0.00000000}.{20601c89-d2f9-4f88-aef9-5037c60037bd}>, "Digital Output (High Definition Audio Device)" <{0.0.0.00000000}.{3d13fd8b-9ef6-4d3d-bc77-319e01b33d89}>, "Headphones (Realtek(R) Audio)" <{0.0.0.00000000}.{49faaf11-5f33-4707-a7fc-d48bd803839a}>, "Headphones (Aleksandr’s AirPods Pro)" <{0.0.0.00000000}.{4afaf647-80fc-4284-89f5-91575a6e60af}>, "Headset (любит санечка Hands-Free)" <{0.0.0.00000000}.{5eb62b6a-7533-4db3-bf6f-0ed47e50a706}>, "Headphones (любит санечка)" <{0.0.0.00000000}.{6616a4b9-ca45-4328-bfe2-78f470a56706}>, "Digital Output (AMD High Definition Audio Device)" <{0.0.0.00000000}.{6779ba19-7131-4d3d-832b-4e86cf67f6a9}>, "NVIDIA Output (NVIDIA High Definition Audio)" <{0.0.0.00000000}.{704e6079-fc36-4e04-94e8-bf10d2723315}>, "Digital Output (High Definition Audio Device)" <{0.0.0.00000000}.{7951c5af-ddba-452c-9dbb-d518f72f9bab}>, "Speakers (JBL Charge 3)" <{0.0.0.00000000}.{86d903a3-f4da-475d-934c-a7f9acb6bc70}>, "Headphones (Realtek(R) Audio)" <{0.0.0.00000000}.{97e22aad-3f6c-46ab-9bcf-a955a4bbf90f}>, "Speakers (Realtek(R) Audio)" <{0.0.0.00000000}.{9913a453-65ad-4f54-8e79-e3be536e7e37}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.0.00000000}.{ad439089-1aed-4507-9453-2ba21a8f0fe1}>, "Digital Output (High Definition Audio Device)" <{0.0.0.00000000}.{b6765636-57c7-4526-ada1-64ea294cdbc0}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.0.00000000}.{bbb2dfc7-a49e-41c3-8376-45750ff2faee}>, "Headphones (PLUSE 5)" <{0.0.0.00000000}.{ceab15f5-4742-42cb-994d-5faab0c5e70b}>, "NVIDIA Output (NVIDIA High Definition Audio)" <{0.0.0.00000000}.{ea86159a-6c31-46f7-9d91-cef9707d8116}>, "Headset (Aleksandr’s AirPods Pro Hands-Free)" <{0.0.0.00000000}.{f7e8000a-41f3-4ece-ac48-072689d27b4c}> }, full list refresh: false
+[2026.10.16 12:27:11] Media Info: Type Capture, default: {0.0.1.00000000}.{5e0ecfeb-132b-425e-aebb-f2b1f0171b8c}, list: { "Microphone (Realtek(R) Audio)" <{0.0.1.00000000}.{0b55693a-8fb1-4cdb-a853-4d5b0676dab9}>, "Stereo Mix (Realtek(R) Audio)" <{0.0.1.00000000}.{0ee204b3-af60-4794-b2fa-b3ce8f13046f}>, "Headset Microphone (JBL Charge 3 Hands-Free)" <{0.0.1.00000000}.{0ee68eca-9d97-4ff9-887f-e6f2e1d3e3e1}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.1.00000000}.{1098b1e9-5856-4971-8b95-ed457eb4a9da}>, "Headset (Aleksandr’s AirPods Pro Hands-Free)" <{0.0.1.00000000}.{2d85e20b-4ac0-4c6c-8624-f1c360e48132}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.1.00000000}.{57433ff4-144d-4a3c-a0d0-3661b6111421}>, "Headset (любит санечка Hands-Free)" <{0.0.1.00000000}.{5813fddb-4047-427c-9360-4ba2475e9fe7}>, "Microphone Array (Realtek(R) Audio)" <{0.0.1.00000000}.{5e0ecfeb-132b-425e-aebb-f2b1f0171b8c}>, "Headset (Aleksandr’s AirPods Pro)" <{0.0.1.00000000}.{60fbec77-aedd-40a4-ae52-04e18bde535a}>, "Headset (любит санечка Hands-Free)" <{0.0.1.00000000}.{6f3a6b0a-cce1-4268-b8d9-4fad57951ec8}>, "Headset Microphone (JBL Charge 3 Hands-Free)" <{0.0.1.00000000}.{7e1d2063-ca1d-4c3f-8ba3-d1f18dbcb894}>, "Microphone (Realtek(R) Audio)" <{0.0.1.00000000}.{e06764d6-a7ba-4a12-ae82-9fef6ae57294}> }, full list refresh: false
+[2026.10.16 12:27:11] Media Info: Type Camera, default: \\?\usb#vid_2b7e&pid_b685&mi_00#7&3b899ede&0&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global, list: { "USB2.0 HD UVC WebCam" <\\?\usb#vid_2b7e&pid_b685&mi_00#7&3b899ede&0&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global> }, full list refresh: true
+[2026.10.16 12:27:11] App Info: reading settings...
+[2026.10.16 12:27:11] App Info: reading encrypted settings...
+[2026.10.16 12:27:11] Lang Info: Loaded cached, keys: 10993
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/OpenSans-Italic.ttf' loaded 'Open Sans'
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/OpenSans-Regular.ttf' loaded 'Open Sans'
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/OpenSans-SemiBold.ttf' loaded 'Open Sans Semibold'
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/OpenSans-SemiBoldItalic.ttf' loaded 'Open Sans Semibold'
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/Vazirmatn-UI-NL-Regular.ttf' loaded 'Vazirmatn UI NL'
+[2026.10.16 12:27:11] Font: from ':/gui/fonts/Vazirmatn-UI-NL-SemiBold.ttf' loaded 'Vazirmatn UI NL SemiBold'
+[2026.10.16 12:27:11] OpenAL Logging Level: (not set)
+[2026.10.16 12:27:11] Qt version: 5.15.19 (compiled with 5.15.19)
+[2026.10.16 12:27:11] Screen Reader: inactive
+[2026.10.16 12:27:11] QObject::connect(QWindow, Unknown): invalid nullptr parameter
+[2026.10.16 12:27:12] App Info: reading accounts info...
+[2026.10.16 12:27:12] App Info: reading encrypted info...
+[2026.10.16 12:27:12] App Info: reading map...
+[2026.10.16 12:27:12] App Info: reading encrypted map...
+[2026.10.16 12:27:12] App Info: reading encrypted user settings...
+[2026.10.16 12:27:12] App Info: encrypted user settings read.
+[2026.10.16 12:27:12] App Info: reading encrypted mtp data...
+[2026.10.16 12:27:12] MTP Info: read keys, current: 5, to destroy: 0
+[2026.10.16 12:27:12] Map read time: 5
+[2026.10.16 12:27:12] App Info: reading encrypted mtp config...
+[2026.10.16 12:27:12] Export Info: Destroy top bar by controller removal.
+[2026.10.16 12:27:12] OpenGL: Using custom 'gpu_driver_bug_list.json'.
+[2026.10.16 12:27:12] OpenGL Profile: OpenGLES.
+[2026.10.16 12:27:12] OpenGL Renderer: ANGLE (AMD, AMD Radeon(TM) Graphics Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.11038.3)
+[2026.10.16 12:27:12] OpenGL Vendor: Google Inc. (AMD)
+[2026.10.16 12:27:12] OpenGL Version: OpenGL ES 3.0.0 (ANGLE 2.1.13 git hash: 48bc60bdb15c)
+[2026.10.16 12:27:12] OpenGL Extensions: GL_EXT_debug_marker, GL_OES_compressed_ETC2_sRGB8_texture, GL_ANGLE_robust_client_memory, GL_CHROMIUM_bind_uniform_location, GL_ANGLE_request_extension, GL_ANGLE_lossy_etc_decode, GL_ANGLE_client_arrays, GL_ANGLE_pack_reverse_row_order, GL_EXT_discard_framebuffer, GL_EXT_multisampled_render_to_texture, GL_EXT_texture_norm16, GL_OES_mapbuffer, GL_OES_compressed_EAC_RG11_signed_texture, GL_EXT_EGL_image_external_wrap_modes, GL_OES_compressed_EAC_R11_unsigned_texture, GL_CHROMIUM_bind_generates_resource, GL_EXT_instanced_arrays, GL_ANGLE_translated_shader_source, GL_CHROMIUM_lose_context, GL_ANGLE_polygon_mode, GL_OES_rgb8_rgba8, GL_OES_vertex_array_object, GL_EXT_texture_border_clamp, GL_KHR_parallel_shader_compile, GL_OES_fbo_render_mipmap, GL_OES_standard_derivatives, GL_OES_texture_stencil8, GL_OES_compressed_EAC_RG11_unsigned_texture, GL_EXT_texture_filter_anisotropic, GL_OES_get_program_binary, , GL_EXT_color_buffer_float, GL_EXT_polygon_offset_clamp, GL_OES_texture_half_float_linear, GL_ANGLE_texture_multisample, GL_NV_shader_noperspective_interpolation, GL_OES_surfaceless_context, GL_EXT_sRGB, GL_OES_compressed_ETC2_sRGB8_alpha8_texture, GL_EXT_blend_func_extended, GL_EXT_clip_cull_distance, GL_OES_compressed_ETC2_RGB8_texture, GL_WEBGL_video_texture, GL_CHROMIUM_sync_query, GL_KHR_debug, GL_OES_depth24, GL_EXT_clip_control, GL_EXT_color_buffer_half_float, GL_ANGLE_memory_size, GL_EXT_texture_format_BGRA8888, GL_ANGLE_base_vertex_base_instance, GL_EXT_conservative_depth, GL_EXT_texture_mirror_clamp_to_edge, GL_OES_sample_variables, GL_NV_pack_subimage, GL_OES_packed_depth_stencil, GL_CHROMIUM_copy_texture, GL_ANGLE_shader_pixel_local_storage, GL_ANGLE_multiview_multisample, GL_OES_compressed_ETC2_RGBA8_texture, GL_OES_element_index_uint, GL_ANGLE_copy_texture_3d, GL_ANGLE_framebuffer_multisample, GL_EXT_disjoint_timer_query, GL_APPLE_clip_distance, GL_EXT_shader_texture_lod, GL_AMD_performance_monitor, GL_ANGLE_provoking_vertex, GL_ANGLE_texture_usage, GL_NV_pixel_buffer_object, GL_OES_EGL_image, GL_ANGLE_base_vertex_base_instance_shader_builtin, GL_OES_compressed_EAC_R11_signed_texture, GL_OES_texture_border_clamp, GL_CHROMIUM_copy_compressed_texture, GL_EXT_texture_compression_s3tc_srgb, GL_ANGLE_shader_pixel_local_storage_coherent, GL_EXT_texture_compression_rgtc, GL_EXT_multi_draw_indirect, GL_NV_fence, GL_ANGLE_get_serialized_context_string, GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture, GL_ANGLE_multi_draw, GL_ANGLE_framebuffer_blit, GL_ANGLE_stencil_texturing, GL_OES_shader_multisample_interpolation, GL_ANGLE_texture_compression_dxt3, GL_EXT_float_blend, GL_EXT_robustness, GL_EXT_base_instance, GL_ANGLE_program_cache_control, GL_EXT_read_format_bgra, GL_EXT_texture_type_2_10_10_10_REV, GL_ANGLE_clip_cull_distance, GL_EXT_draw_buffers_indexed, GL_NV_EGL_stream_consumer_external, GL_EXT_texture_compression_bptc, GL_EXT_unpack_subimage, GL_OES_EGL_image_external_essl3, GL_EXT_debug_label, GL_NV_framebuffer_blit, GL_EXT_texture_rg, GL_OES_EGL_image_external, GL_OES_texture_npot, GL_ANGLE_get_tex_level_parameter, GL_ANGLE_instanced_arrays, GL_EXT_draw_buffers, GL_EXT_frag_depth, GL_EXT_map_buffer_range, GL_OES_texture_float_linear, GL_OES_draw_elements_base_vertex, GL_ANGLE_renderability_validation, GL_OES_draw_buffers_indexed, GL_ANGLE_depth_texture, GL_OES_texture_float, GL_EXT_draw_elements_base_vertex, GL_OVR_multiview, GL_OVR_multiview2, GL_ANGLE_texture_compression_dxt5, GL_EXT_depth_clamp, GL_EXT_occlusion_query_boolean, GL_EXT_blend_minmax, GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture, GL_EXT_texture_compression_dxt1, GL_EXT_render_snorm, GL_OES_texture_half_float, GL_OES_depth32, GL_EXT_texture_storage
+[2026.10.16 12:27:12] EGL Extensions: EGL_EXT_create_context_robustness, EGL_ANGLE_d3d_share_handle_client_buffer, EGL_ANGLE_d3d_texture_client_buffer, EGL_ANGLE_surface_d3d_texture_2d_share_handle, EGL_ANGLE_query_surface_pointer, EGL_ANGLE_window_fixed_size, EGL_ANGLE_keyed_mutex, EGL_ANGLE_surface_orientation, EGL_ANGLE_direct_composition, EGL_ANGLE_windows_ui_composition, EGL_NV_post_sub_buffer, EGL_KHR_create_context, EGL_KHR_image, EGL_KHR_image_base, EGL_KHR_gl_texture_2D_image, EGL_KHR_gl_texture_cubemap_image, EGL_KHR_gl_renderbuffer_image, EGL_KHR_get_all_proc_addresses, EGL_KHR_stream, EGL_KHR_stream_consumer_gltexture, EGL_NV_stream_consumer_gltexture_yuv, EGL_ANGLE_stream_producer_d3d_texture, EGL_ANGLE_create_context_webgl_compatibility, EGL_CHROMIUM_create_context_bind_generates_resource, EGL_CHROMIUM_sync_control, EGL_EXT_pixel_format_float, EGL_KHR_surfaceless_context, EGL_ANGLE_display_texture_share_group, EGL_ANGLE_display_semaphore_share_group, EGL_ANGLE_create_context_client_arrays, EGL_ANGLE_program_cache_control, EGL_ANGLE_robust_resource_initialization, EGL_ANGLE_create_context_extensions_enabled, EGL_ANDROID_blob_cache, EGL_ANDROID_recordable, EGL_ANGLE_image_d3d11_texture, EGL_ANGLE_create_context_backwards_compatible, EGL_KHR_no_config_context, EGL_KHR_create_context_no_error, EGL_KHR_reusable_sync, 
+[2026.10.16 12:27:12] OpenGL: QOpenGLContext created, version: 3.3.
+[2026.10.16 12:27:12] Renderer: [OpenGL] (Window)
+[2026.10.16 12:27:12] QObject::connect(QWindow, Unknown): invalid nullptr parameter
+[2026.10.16 12:28:47] API Warning: not loaded minimal channel applied.
+[2026.10.16 12:28:47] RPC Error: request 115 got fail with code 400, error STICKERSET_INVALID
+[2026.10.16 12:29:02] Update Info: Starting loading 'C:/Users/saks2/Downloads/tupdates/td-update-win-x64-7003001' from 0 offset.
+[2026.10.16 12:29:02] Update Info: Loading using HTTP from 'https://tdesktop.telega.one/win-x64/td-update-win-x64-7003001'.
+[2026.10.16 12:29:06] Streaming Error: Error in avformat_open_input (code: -542398533, text: Generic error in an external library).
+[2026.10.16 12:29:20] MTP Error: could not find request dc for delayed resend, requestId 143
+[2026.10.19 16:04:25] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.19 16:04:25] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.19 16:04:25] monitorData: Unable to obtain handle for monitor '\\.\DISPLAY1', defaulting to 96 DPI.
+[2026.10.19 17:24:22] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.19 17:24:22] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.19 17:24:22] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.20 15:38:17] monitorData: Unable to obtain handle for monitor '\\.\DISPLAY1', defaulting to 96 DPI.
+[2026.10.20 15:43:16] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.20 15:43:16] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.20 15:43:16] QNetworkReplyImplPrivate::error: Internal problem, this method must only be called once.
+[2026.10.20 15:45:02] MTP Info: -404 error received in 2 with temporary key, assuming it was destroyed.
+[2026.10.20 15:45:02] MTP Info: -404 error received in 160203 with temporary key, assuming it was destroyed.
+[2026.10.20 15:45:04] MTP Info: -404 error received in 160002 with temporary key, assuming it was destroyed.
+[2026.10.20 15:45:04] History::unknownMessageDeleted. Peer ID: 1918719848, Message ID: 422.
+[2026.10.20 15:45:04] API Warning: not loaded minimal channel applied.
+[2026.10.20 15:45:04] History::unknownMessageDeleted. Peer ID: 1746351766, Message ID: 304.
+[2026.10.20 15:45:04] History::unknownMessageDeleted. Peer ID: 1746351766, Message ID: 305.
+[2026.10.20 15:45:04] API Warning: not loaded minimal channel applied.
+[2026.10.20 15:45:05] RPC Error: request 3050 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:05] RPC Error: request 3049 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:05] RPC Error: request 3051 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1916607570, Message ID: 31839.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 2428.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 2429.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 2510.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3463.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3465.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3464.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3498.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3506.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3507.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3502.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3529.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3534.
+[2026.10.20 15:45:05] History::unknownMessageDeleted. Peer ID: 1777574049, Message ID: 3761.
+[2026.10.20 15:45:06] API Warning: not loaded minimal channel applied.
+[2026.10.20 15:45:06] RPC Error: request 3084 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:06] RPC Error: request 3083 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:06] RPC Error: request 3082 got fail with code 400, error CHANNEL_INVALID
+[2026.10.20 15:45:07] RPC Error: request 3144 got fail with code 400, error USER_NOT_PARTICIPANT
+[2026.10.20 15:45:08] Audio Info: recreating audio device and reattaching the tracks
+[2026.10.20 15:45:11] Audio Info: Closing audio playback device.
+[2026.10.20 16:47:58] Media Error: Can't sync default device for type Capture, default: , list: { "Microphone (Realtek(R) Audio)" <{0.0.1.00000000}.{0b55693a-8fb1-4cdb-a853-4d5b0676dab9}>, "Stereo Mix (Realtek(R) Audio)" <{0.0.1.00000000}.{0ee204b3-af60-4794-b2fa-b3ce8f13046f}>, "Headset Microphone (JBL Charge 3 Hands-Free)" <{0.0.1.00000000}.{0ee68eca-9d97-4ff9-887f-e6f2e1d3e3e1}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.1.00000000}.{1098b1e9-5856-4971-8b95-ed457eb4a9da}>, "Headset (Aleksandr’s AirPods Pro Hands-Free)" <{0.0.1.00000000}.{2d85e20b-4ac0-4c6c-8624-f1c360e48132}>, "Headset (PLUSE 5 Hands-Free)" <{0.0.1.00000000}.{57433ff4-144d-4a3c-a0d0-3661b6111421}>, "Headset (любит санечка Hands-Free)" <{0.0.1.00000000}.{5813fddb-4047-427c-9360-4ba2475e9fe7}>, "Microphone Array (Realtek(R) Audio)" <{0.0.1.00000000}.{5e0ecfeb-132b-425e-aebb-f2b1f0171b8c}>, "Headset (Aleksandr’s AirPods Pro)" <{0.0.1.00000000}.{60fbec77-aedd-40a4-ae52-04e18bde535a}>, "Headset (любит санечка Hands-Free)" <{0.0.1.00000000}.{6f3a6b0a-cce1-4268-b8d9-4fad57951ec8}>, "Headset Microphone (JBL Charge 3 Hands-Free)" <{0.0.1.00000000}.{7e1d2063-ca1d-4c3f-8ba3-d1f18dbcb894}>, "Microphone (Realtek(R) Audio)" <{0.0.1.00000000}.{e06764d6-a7ba-4a12-ae82-9fef6ae57294}> }
+[2026.10.20 16:52:40] Audio Info: recreating audio device and reattaching the tracks
+[2026.10.20 16:52:42] Audio Info: Closing audio playback device.
+[2026.10.20 16:53:18] RPC Error: request 3309 got fail with code 400, error FILE_REFERENCE_EXPIRED
