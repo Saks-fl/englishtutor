@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Репетитор английского онлайн: подготовка к ОГЭ и ЕГЭ, английский для школьников и взрослых. Бесплатная диагностика.">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Прототип сайта репетитора</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: лендинг-тетрадь — полосы на всю ширину с внутренней колонкой 1120px; шкала CEFR A1–C2 как сквозной мотив; отдельный вид «CRM» */
+:root{
+  --bg:#f5f6fa; --surface:#ffffff; --fg:#121629; --muted:#5b6179; --line:#dfe2ee;
+  --ink:#1e3fc4; --ink-fg:#ffffff; --mark:#ffe066; --mark-fg:#121629; --soft:#e8ecfb;
+  --ok:#1f8a4c; --warn:#b4570b; --bad:#c0262d;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1120; --surface:#161a2d; --fg:#e9ebf5; --muted:#9ca3bf; --line:#2a3051;
+  --ink:#8ea8ff; --ink-fg:#0e1120; --mark:#e6c443; --mark-fg:#121629; --soft:#1c2340;
+  --ok:#4cc27e; --warn:#f0a35a; --bad:#ff6b70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1120; --surface:#161a2d; --fg:#e9ebf5; --muted:#9ca3bf; --line:#2a3051;
+  --ink:#8ea8ff; --ink-fg:#0e1120; --mark:#e6c443; --mark-fg:#121629; --soft:#1c2340;
+  --ok:#4cc27e; --warn:#f0a35a; --bad:#ff6b70; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--f-body);margin:0}
+.in{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+.band.alt{background:var(--surface);border-block:1px solid var(--line)}
+h1,h2{font-family:var(--f-display);text-wrap:balance;margin:0}
+h2{font-size:clamp(24px,3.4vw,34px);line-height:1.2;font-weight:700}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0 0 10px}
+.lead{color:var(--muted);max-width:60ch;margin:12px 0 0}
+.hl{background:linear-gradient(transparent 58%,var(--mark) 58%);padding:0 3px}
+button,.btn{font:600 15px var(--f-body);cursor:pointer;border-radius:10px;border:1px solid transparent;padding:12px 20px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-main{background:var(--ink);color:var(--ink-fg)}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+.proto{background:var(--mark);color:var(--mark-fg);font-size:13.5px;padding-block:8px}
+.proto .in{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+.proto b{font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.06em}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.nav .in{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{font:700 16px var(--f-display);display:flex;gap:8px;align-items:center;color:var(--fg);text-decoration:none;background:none;border:0;padding:0}
+.logo i{font-style:normal;background:var(--ink);color:var(--ink-fg);border-radius:6px;padding:2px 6px;font-size:13px}
+.links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.links button{background:none;color:var(--fg);padding:8px 10px;font-weight:500;font-size:14.5px}
+.links button:hover{background:var(--soft)}
+.links button.on{background:var(--soft);color:var(--ink)}
+/* hero */
+.hero{padding-block:64px 56px}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.1;font-weight:700}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
+.facts div{display:grid}
+.facts b{font:700 24px var(--f-display);font-variant-numeric:tabular-nums}
+.facts span{color:var(--muted);font-size:14px}
+.ladder{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:10px}
+.ladder .t{font:500 12px var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.rung{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center}
+.rung code{font:500 14px var(--f-mono);text-align:center;padding:6px 0;border-radius:6px;background:var(--soft);color:var(--ink)}
+.rung .bar{height:10px;border-radius:5px;background:var(--soft);position:relative;overflow:hidden}
+.rung .bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);border-radius:5px}
+.rung small{grid-column:2;color:var(--muted);font-size:13px;margin-top:-6px}
+/* segments */
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:32px}
+.seg button{background:var(--surface);border:1px solid var(--line);text-align:left;display:grid;gap:8px;padding:20px;color:var(--fg);font-weight:400;align-content:start}
+.seg button:hover,.seg button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.seg h3{margin:0;font:600 17px var(--f-body)}
+.seg p{margin:0;font-size:14.5px;color:var(--muted)}
+.seg code{font:500 12px var(--f-mono);color:var(--ink)}
+.segdetail{margin-top:20px;background:var(--soft);border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.segdetail ul{margin:8px 0 0;padding-left:20px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:32px;counter-reset:s}
+.steps div{border-top:2px solid var(--ink);padding-top:16px}
+.steps div::before{counter-increment:s;content:"Шаг " counter(s);font:500 12px var(--f-mono);color:var(--ink);letter-spacing:.06em;text-transform:uppercase}
+.steps h3{margin:8px 0 6px;font:600 17px var(--f-body)}
+.steps p{margin:0;color:var(--muted);font-size:14.5px}
+/* quiz */
+.quiz{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;max-width:720px}
+.qhead{display:flex;justify-content:space-between;gap:12px;font:500 12px var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.qprog{height:6px;background:var(--soft);border-radius:3px;margin:10px 0 20px;overflow:hidden}
+.qprog i{display:block;height:100%;background:var(--ink);width:0;transition:width .25s}
+.qtext{font:600 19px/1.4 var(--f-body);margin:0 0 16px}
+.qtext em{font-style:normal;background:var(--soft);padding:0 6px;border-radius:4px}
+.opts{display:grid;gap:10px}
+.opts button{background:var(--bg);border:1px solid var(--line);color:var(--fg);text-align:left;font-weight:500}
+.opts button:hover{border-color:var(--ink)}
+.result{display:grid;gap:12px}
+.result .lvl{font:700 56px/1 var(--f-display);color:var(--ink)}
+/* prices */
+.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.price{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:10px;align-content:start}
+.price.best{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.price h3{margin:0;font:600 18px var(--f-body);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.tag{font:500 11px var(--f-mono);background:var(--mark);color:var(--mark-fg);padding:3px 8px;border-radius:99px;white-space:nowrap}
+.price .sum{font:700 30px var(--f-display);font-variant-numeric:tabular-nums}
+.price .per{color:var(--muted);font-size:14px}
+.price ul{margin:0;padding-left:18px;font-size:14.5px}
+.calc{margin-top:24px;background:var(--soft);border-radius:14px;padding:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.2fr);gap:16px;align-items:end}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}
+input,select,textarea{font:15px var(--f-body);padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--fg);width:100%}
+.calcout{background:var(--surface);border-radius:10px;padding:14px 16px}
+.calcout b{font:700 26px var(--f-display);display:block;font-variant-numeric:tabular-nums}
+.calcout span{color:var(--muted);font-size:13.5px}
+/* about */
+.about{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;align-items:start;margin-top:8px}
+.photo{aspect-ratio:4/5;max-width:100%;border-radius:16px;background:repeating-linear-gradient(135deg,var(--soft) 0 12px,var(--surface) 12px 24px);border:1px dashed var(--muted);display:grid;place-items:center;color:var(--muted);font:500 13px var(--f-mono);text-align:center;padding:16px}
+.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.creds span{font:500 12.5px var(--f-mono);border:1px solid var(--line);border-radius:6px;padding:4px 10px;background:var(--bg)}
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.rev{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:12px;align-content:start}
+.rev .score{font:700 22px var(--f-display);color:var(--ink)}
+.rev p{margin:0;font-size:15px}
+.rev footer{color:var(--muted);font-size:13.5px}
+.sample{font:500 11px var(--f-mono);color:var(--warn);letter-spacing:.04em}
+/* faq */
+.faq{margin-top:28px;display:grid;gap:10px;max-width:820px}
+details{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px 18px}
+summary{cursor:pointer;font-weight:600;padding:12px 0;list-style-position:outside}
+details p{margin:0 0 14px;color:var(--muted)}
+/* form */
+.formwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px;margin-top:8px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-weight:400;font-size:13.5px;color:var(--muted);align-items:start}
+.check input{width:18px;height:18px;margin:2px 0 0}
+.check a,.linkbtn{color:var(--ink);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+.err{color:var(--bad);font-size:13.5px;min-height:1em}
+.ok{background:color-mix(in srgb,var(--ok) 14%,var(--surface));border:1px solid var(--ok);border-radius:10px;padding:14px 16px}
+.contacts{display:grid;gap:12px;align-content:start}
+.contacts .c{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--line)}
+.contacts .c span{color:var(--muted)}
+footer.site{padding-block:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer.site .in{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap}
+/* crm */
+.crmtop{display:flex;gap:16px;justify-content:space-between;align-items:end;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{font:700 26px var(--f-display);display:block;font-variant-numeric:tabular-nums}
+.kpi span{color:var(--muted);font-size:13px}
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:12px;margin-top:20px;overflow-x:auto;padding-bottom:12px}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:10px;align-content:start;min-height:200px}
+.col h3{margin:0;font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.lead-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:6px;font-size:14px}
+.lead-card.alert{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+.lead-card b{font-size:15px}
+.lead-card .meta{color:var(--muted);font-size:12.5px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 11px var(--f-mono);padding:2px 7px;border-radius:99px;background:var(--soft);color:var(--ink)}
+.chip.w{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.lead-card .act{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.lead-card .act button{padding:5px 9px;font-size:12.5px;border-radius:7px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
+.lead-card .act button:hover{border-color:var(--ink)}
+.explain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.explain div{background:var(--soft);border-radius:12px;padding:16px 18px;font-size:14.5px}
+.explain h4{margin:0 0 6px;font:600 15px var(--f-body)}
+.sitemap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:24px}
+.sitemap div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.sitemap code{font:500 12px var(--f-mono);color:var(--ink);display:block}
+.legal{max-width:760px}
+/* cabinet */
+.cab{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;margin-top:28px}
+.cab .box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:grid;gap:12px;align-content:start;min-width:0}
+.cab .box h3{margin:0;font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cab .stack{display:grid;gap:16px;align-content:start}
+.next{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.next b{font:700 22px var(--f-display)}
+.track{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.track span{font:500 12px var(--f-mono);text-align:center;padding:8px 0;border-radius:6px;background:var(--soft);color:var(--muted)}
+.track span.done{background:var(--ink);color:var(--ink-fg)}
+.track span.now{background:var(--mark);color:var(--mark-fg)}
+.msg{background:var(--soft);border-radius:12px;padding:14px 16px;font-size:15px}
+.msg .who{font:500 12px var(--f-mono);color:var(--ink);margin-bottom:4px}
+.voice{display:flex;gap:10px;align-items:center;margin-top:8px;font:500 12px var(--f-mono);color:var(--muted)}
+.voice i{flex:1;height:18px;border-radius:9px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 6px);opacity:.5}
+.streak{display:flex;gap:6px;flex-wrap:wrap}
+.streak span{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font:500 11px var(--f-mono);background:var(--soft);color:var(--muted)}
+.streak span.on{background:var(--ok);color:var(--surface)}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badges span{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:5px 12px;background:var(--bg)}
+.badges span.locked{opacity:.45}
+.hw{display:grid;gap:8px}
+.hw label{display:flex;gap:10px;align-items:center;font-weight:400}
+.hw input{width:18px;height:18px}
+.mood{display:flex;gap:8px;flex-wrap:wrap}
+.mood button{background:var(--bg);border:1px solid var(--line);color:var(--fg);padding:8px 12px;font-weight:500;font-size:14px}
+.mood button.on{border-color:var(--ink);color:var(--ink)}
+.copyrow{display:flex;gap:8px;flex-wrap:wrap}
+.copyrow code{font:500 14px var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;user-select:all}
+.lead-card .about{font-size:12.5px;background:var(--soft);border-radius:6px;padding:6px 8px}
+.lead-card .todo{font-size:12.5px;color:var(--ink)}
+@media (max-width:900px){.cab{grid-template-columns:1fr}}
+.legal h3{margin-top:28px}
+@media (max-width:900px){
+  .hero .in,.about,.formwrap,.segdetail{grid-template-columns:1fr}
+  .seg,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prices,.reviews,.explain{grid-template-columns:1fr}
+  .calc{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about .photo{max-width:260px}
+}
+@media (max-width:520px){.seg,.steps,.calc,.row2{grid-template-columns:1fr}.band{padding-block:52px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<div class="proto"><div class="in"><span><b>ПРОТОТИП</b> · имя, тексты, цены и отзывы — примеры, их нужно заменить реальными</span><span>Заявки из формы попадают во вкладку «CRM» (хранятся только в вашем браузере)</span></div></div>
+
+<header class="nav"><div class="in">
+  <button class="logo" data-go="site" data-to="top"><i>EN</i> Анна Орлова</button>
+  <nav class="links" aria-label="Меню">
+    <button data-go="site" data-to="dir">Направления</button>
+    <button data-go="site" data-to="test">Тест уровня</button>
+    <button data-go="site" data-to="prices">Цены</button>
+    <button data-go="site" data-to="about">Обо мне</button>
+    <button data-go="site" data-to="reviews">Отзывы</button>
+    <button data-go="site" data-to="book">Контакты</button>
+    <button data-go="cabinet">Кабинет ученика</button>
+    <button data-go="crm" id="nav-crm">CRM <span id="crm-count"></span></button>
+    <button data-go="map">Карта сайта</button>
+  </nav>
+</div></header>
+
+<!-- ============ SITE ============ -->
+<div id="view-site">
+<section class="hero" id="top"><div class="in">
+  <div>
+    <p class="eyebrow">Репетитор английского онлайн · ОГЭ, ЕГЭ, разговорный</p>
+    <h1>Английский с понятным планом: от <span class="hl">тройки</span> до 85+ на ЕГЭ</h1>
+    <p class="lead">Индивидуальные занятия для школьников и взрослых. Первая встреча — бесплатная диагностика 30 минут: определим уровень и составим план до вашей цели.</p>
+    <div class="cta">
+      <button class="btn btn-main" data-go="site" data-to="book">Записаться на бесплатную диагностику</button>
+      <button class="btn btn-ghost" data-go="site" data-to="test">Пройти тест уровня</button>
+    </div>
+    <div class="facts">
+      <div><b>9 лет</b><span>преподаю английский</span></div>
+      <div><b>82</b><span>средний балл ЕГЭ учеников</span></div>
+      <div><b>C2</b><span>сертификат CPE</span></div>
+    </div>
+  </div>
+  <div class="ladder" aria-label="Шкала уровней CEFR">
+    <div class="t">Путь ученика по шкале CEFR</div>
+    <div class="rung"><code>A1</code><div class="bar"><i style="width:16%"></i></div></div>
+    <div class="rung"><code>A2</code><div class="bar"><i style="width:33%"></i></div><small>уровень ОГЭ</small></div>
+    <div class="rung"><code>B1</code><div class="bar"><i style="width:50%"></i></div><small>базовый ЕГЭ, путешествия</small></div>
+    <div class="rung"><code>B2</code><div class="bar"><i style="width:67%"></i></div><small>ЕГЭ на 80+, рабочие созвоны</small></div>
+    <div class="rung"><code>C1</code><div class="bar"><i style="width:84%"></i></div><small>свободная работа на английском</small></div>
+    <div class="rung"><code>C2</code><div class="bar"><i style="width:100%"></i></div></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="dir"><div class="in">
+  <p class="eyebrow">Направления</p>
+  <h2>С кем я работаю</h2>
+  <div class="seg" id="seg"></div>
+  <div class="segdetail" id="segdetail"></div>
+</div></section>
+
+<section class="band"><div class="in">
+  <p class="eyebrow">Как проходят занятия</p>
+  <h2>Четыре шага от заявки до результата</h2>
+  <div class="steps">
+    <div><h3>Диагностика</h3><p>Бесплатно, 30 минут. Проверяем уровень, обсуждаем цель и сроки.</p></div>
+    <div><h3>План</h3><p>Присылаю план по месяцам: темы, контрольные точки, ожидаемый результат.</p></div>
+    <div><h3>Занятия</h3><p>Онлайн, 1–3 раза в неделю. Домашние задания с проверкой.</p></div>
+    <div><h3>Отчёт</h3><p>Раз в месяц — короткий отчёт ученику или родителю и контрольный тест.</p></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="test"><div class="in">
+  <p class="eyebrow">Тест уровня · 8 вопросов · 2 минуты</p>
+  <h2>Узнайте свой уровень по шкале A1–C2</h2>
+  <p class="lead">Это быстрая оценка. Точный уровень определим на диагностике.</p>
+  <div class="quiz" id="quiz"></div>
+</div></section>
+
+<section class="band" id="prices"><div class="in">
+  <p class="eyebrow">Цены</p>
+  <h2>Пакеты занятий</h2>
+  <p class="lead">Урок — 60 минут. Чем больше пакет, тем ниже цена урока. Оплата пакета вперёд, чек самозанятого.</p>
+  <div class="prices" id="prices-grid"></div>
+  <div class="calc">
+    <label for="c-seg">Направление<select id="c-seg"></select></label>
+    <label for="c-pack">Пакет<select id="c-pack"></select></label>
+    <label for="c-freq">Занятий в неделю<select id="c-freq"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></label>
+    <div class="calcout" id="calcout" aria-live="polite"></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="about"><div class="in about">
+  <div class="photo">Здесь фото преподавателя<br>(портрет, светлый фон)</div>
+  <div>
+    <p class="eyebrow">Обо мне</p>
+    <h2>Анна Орлова</h2>
+    <p class="lead">Преподаю английский 9 лет, последние 5 — специализируюсь на подготовке к ОГЭ и ЕГЭ. Работаю по официальным демоверсиям ФИПИ и разбираю каждое задание с критериями оценки. Со взрослыми строю занятия вокруг реальных ситуаций: созвоны, письма, собеседования.</p>
+    <div class="creds"><span>МПГУ, лингвист-преподаватель</span><span>Cambridge CPE (C2)</span><span>TKT</span><span>9 лет опыта</span><span>140+ учеников</span></div>
+  </div>
+</div></section>
+
+<section class="band" id="reviews"><div class="in">
+  <p class="eyebrow">Результаты учеников</p>
+  <h2>Отзывы</h2>
+  <div class="reviews">
+    <article class="rev"><span class="sample">ПРИМЕР ОТЗЫВА — ЗАМЕНИТЬ РЕАЛЬНЫМ</span><div class="score">ЕГЭ: 58 → 87</div><p>Занимались 8 месяцев. Сын перестал бояться устной части, а письмо писал по схеме, которую разобрали на уроках.</p><footer>Мама ученика 11 класса</footer></article>
+    <article class="rev"><span class="sample">ПРИМЕР ОТЗЫВА — ЗАМЕНИТЬ РЕАЛЬНЫМ</span><div class="score">ОГЭ: 5</div><p>В начале 9 класса была тройка в четверти. Каждый месяц получали отчёт и видели, что меняется.</p><footer>Родитель ученицы 9 класса</footer></article>
+    <article class="rev"><span class="sample">ПРИМЕР ОТЗЫВА — ЗАМЕНИТЬ РЕАЛЬНЫМ</span><div class="score">B1 → B2 за 5 месяцев</div><p>Готовились к собеседованию в зарубежную компанию. Прошёл техническое интервью на английском.</p><footer>Backend-разработчик, 29 лет</footer></article>
+  </div>
+</div></section>
+
+<section class="band alt"><div class="in">
+  <p class="eyebrow">Частые вопросы</p>
+  <h2>Вопросы перед началом</h2>
+  <div class="faq">
+    <details><summary>Как проходят онлайн-занятия?</summary><p>По видеосвязи (Яндекс Телемост или Zoom) с интерактивной доской. Нужен компьютер или планшет, наушники и стабильный интернет.</p></details>
+    <details><summary>Что, если нужно отменить урок?</summary><p>Отмена или перенос бесплатно — не позднее чем за 24 часа. При более поздней отмене урок списывается из пакета.</p></details>
+    <details><summary>Сколько времени нужно на подготовку к ЕГЭ?</summary><p>Обычно 8–12 месяцев при 2 занятиях в неделю. Точный срок зависит от стартового уровня и целевого балла.</p></details>
+    <details><summary>Как оплатить?</summary><p>Через СБП или по ссылке на оплату картой. После оплаты отправляю чек самозанятого.</p></details>
+    <details><summary>Будут ли домашние задания?</summary><p>Да, 20–40 минут между уроками. Проверяю их до следующего занятия.</p></details>
+    <details><summary>Можно ли заниматься в мини-группе?</summary><p>Да, мини-группы по 3–4 человека для подготовки к ОГЭ и разговорной практики. Стоимость ниже индивидуальных занятий.</p></details>
+  </div>
+</div></section>
+
+<section class="band" id="book"><div class="in formwrap">
+  <div>
+    <p class="eyebrow">Запись</p>
+    <h2>Запишитесь на бесплатную диагностику</h2>
+    <p class="lead">Отвечаю в течение 15 минут с 9:00 до 21:00 по Москве. Удобнее в мессенджере — пишите напрямую.</p>
+    <div class="contacts">
+      <div class="c"><span>Telegram</span><b>@anna_english_example</b></div>
+      <div class="c"><span>Телефон / WhatsApp / MAX</span><b>+7 900 000-00-00</b></div>
+      <div class="c"><span>E-mail</span><b>hello@example.ru</b></div>
+      <div class="c"><span>Время работы</span><b>Пн–Сб, 9:00–21:00</b></div>
+    </div>
+  </div>
+  <form id="lead-form" novalidate>
+    <div class="row2">
+      <label for="f-name">Имя<input id="f-name" autocomplete="name" placeholder="Как к вам обращаться"></label>
+      <label for="f-contact">Телефон или Telegram<input id="f-contact" placeholder="+7… или @username"></label>
+    </div>
+    <div class="row2">
+      <label for="f-seg">Направление<select id="f-seg"></select></label>
+      <label for="f-level">Уровень (если знаете)<select id="f-level"><option value="">Не знаю</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+    </div>
+    <div class="row2">
+      <label for="f-time">Удобное время<select id="f-time"><option>Утро</option><option>День</option><option selected>Вечер</option><option>Выходные</option></select></label>
+      <label for="f-src">Откуда узнали о нас<select id="f-src"><option>Поиск Яндекса</option><option>Яндекс Карты / 2ГИС</option><option>Авито</option><option>Профи.ру</option><option>Telegram</option><option>ВКонтакте</option><option>Рекомендация</option><option>Другое</option></select></label>
+    </div>
+    <label for="f-goal">Цель занятий<textarea id="f-goal" rows="3" placeholder="Например: ЕГЭ в мае, нужно 80+"></textarea></label>
+    <label class="check" for="f-pd"><input type="checkbox" id="f-pd"><span>Даю <button type="button" class="linkbtn" data-go="legal">согласие на обработку персональных данных</button> и принимаю <button type="button" class="linkbtn" data-go="legal">политику конфиденциальности</button>. Обязательно.</span></label>
+    <label class="check" for="f-ads"><input type="checkbox" id="f-ads"><span>Согласен получать полезные материалы и предложения. Необязательно.</span></label>
+    <div class="err" id="f-err" role="alert"></div>
+    <button class="btn btn-main" type="submit">Записаться на диагностику</button>
+    <div id="f-ok" hidden></div>
+  </form>
+</div></section>
+
+<footer class="site"><div class="in">
+  <span>Анна Орлова, самозанятая · ИНН 000000000000 (пример)</span>
+  <span><button class="linkbtn" data-go="legal">Политика конфиденциальности</button> · <button class="linkbtn" data-go="legal">Оферта</button></span>
+</div></footer>
+</div>
+
+<!-- ============ CRM ============ -->
+<div id="view-crm" hidden>
+<section class="band"><div class="in">
+  <div class="crmtop">
+    <div>
+      <p class="eyebrow">Демо-CRM · данные в вашем браузере</p>
+      <h2>Воронка учеников</h2>
+      <p class="lead">Новые заявки с сайта появляются в первой колонке. Двигайте карточки по этапам. Жёлтая рамка — у ученика осталось 2 урока или меньше, пора предложить продление.</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-ghost" id="crm-reset">Вернуть пример</button>
+      <button class="btn btn-main" data-go="site" data-to="book">Добавить заявку через сайт</button>
+    </div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="board" id="board"></div>
+  <div class="explain">
+    <div><h4>Как попадёт заявка в настоящую CRM</h4>Форма отправляет данные в Битрикс24 или amoCRM через веб-хук. Преподаватель сразу получает уведомление в Telegram.</div>
+    <div><h4>Откуда пришёл ученик</h4>Поле «Откуда узнали» и UTM-метки в рекламных ссылках. По ним видно, какой канал приносит оплаты, а не только заявки.</div>
+    <div><h4>Повторные продажи</h4>CRM считает остаток уроков в пакете и напоминает о продлении за 2 урока до конца.</div>
+  </div>
+</div></section>
+</div>
+
+<!-- ============ CABINET ============ -->
+<div id="view-cabinet" hidden>
+<section class="band"><div class="in">
+  <p class="eyebrow">Кабинет ученика · пример того, что видит ученик или родитель</p>
+  <h2>Привет, Соня!</h2>
+  <p class="lead">Здесь ученик видит свой прогресс, домашние задания и сообщения от преподавателя. На этом примере показано, как сайт помогает вернуться к занятиям: видны путь, награды и личное внимание.</p>
+  <div class="cab">
+    <div class="stack">
+      <div class="box">
+        <h3>Следующий урок</h3>
+        <div class="next"><div><b>Четверг, 19:00</b><div style="color:var(--muted);font-size:14px">Тема: письмо другу (задание 37 ОГЭ)</div></div><button class="btn btn-ghost" id="cab-move">Перенести урок</button></div>
+        <div class="err" id="cab-move-msg" role="status" style="color:var(--muted)"></div>
+      </div>
+      <div class="box">
+        <h3>Сообщение от Анны</h3>
+        <div class="msg"><div class="who">Анна · после урока во вторник</div>Соня, сегодня ты впервые сама рассказала про Барсика целых 6 предложений без подсказок! Домашка ниже, а в голосовом разобрала твоё письмо.<div class="voice">▶ <i></i> 1:24</div></div>
+      </div>
+      <div class="box">
+        <h3>Домашнее задание · до четверга</h3>
+        <div class="hw" id="hw">
+          <label for="hw1"><input type="checkbox" id="hw1" checked> Учебник, с. 42, упр. 3</label>
+          <label for="hw2"><input type="checkbox" id="hw2"> 10 слов про животных в карточках</label>
+          <label for="hw3"><input type="checkbox" id="hw3"> Записать голосовое: «Мой выходной» (1 минута)</label>
+        </div>
+        <div id="hw-msg" style="font-size:14px;color:var(--ok)"></div>
+      </div>
+      <div class="box">
+        <h3>Как прошёл последний урок?</h3>
+        <div class="mood" id="mood"><button data-m="Было интересно">Было интересно</button><button data-m="Было сложно">Было сложно</button><button data-m="Было скучновато">Было скучновато</button></div>
+        <div id="mood-msg" style="font-size:14px;color:var(--muted)">Анна увидит ответ и подстроит следующий урок.</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="box">
+        <h3>Мой путь · цель ОГЭ на 5</h3>
+        <div class="track"><span class="done">A1</span><span class="now">A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+        <div style="font-size:14px;color:var(--muted)">Пробник ОГЭ: сентябрь 41 → октябрь 52 из 68 баллов. До пятёрки осталось 6 баллов.</div>
+      </div>
+      <div class="box">
+        <h3>Серия: 9 занятий подряд без пропусков</h3>
+        <div class="streak"><span class="on">1</span><span class="on">2</span><span class="on">3</span><span class="on">4</span><span class="on">5</span><span class="on">6</span><span class="on">7</span><span class="on">8</span><span class="on">9</span><span>10</span></div>
+        <div style="font-size:14px;color:var(--muted)">На 10-м занятии — сертификат «Месяц без пропусков».</div>
+      </div>
+      <div class="box">
+        <h3>Награды</h3>
+        <div class="badges"><span>Первый урок</span><span>100 слов</span><span>Письмо без ошибок</span><span class="locked">Пробник на 5</span><span class="locked">Уровень B1</span></div>
+      </div>
+      <div class="box">
+        <h3>Пакет</h3>
+        <div style="font-size:15px">Осталось <b>3 урока</b> из 8. Можно заморозить пакет до 4 недель: уроки сохранятся.</div>
+        <div class="copyrow"><button class="btn btn-ghost" id="cab-freeze">Заморозить пакет</button></div>
+        <div id="freeze-msg" style="font-size:14px;color:var(--muted)"></div>
+      </div>
+      <div class="box">
+        <h3>Пригласить друга</h3>
+        <div style="font-size:15px">Другу — бесплатная диагностика и урок в подарок, тебе — урок в подарок после его первой оплаты.</div>
+        <div class="copyrow"><code id="ref-code">SONYA-2026</code><button class="btn btn-ghost" id="ref-copy">Скопировать код</button></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+</div>
+
+<!-- ============ SITEMAP ============ -->
+<div id="view-map" hidden>
+<section class="band"><div class="in">
+  <p class="eyebrow">Структура будущего сайта</p>
+  <h2>Карта сайта: 15 страниц</h2>
+  <p class="lead">Сейчас прототип — это главная страница со всеми блоками. Полная версия разделяет направления на отдельные страницы, чтобы каждая продвигалась в Яндексе по своим запросам.</p>
+  <div class="sitemap" id="sitemap"></div>
+</div></section>
+</div>
+
+<!-- ============ LEGAL ============ -->
+<div id="view-legal" hidden>
+<section class="band"><div class="in legal">
+  <p class="eyebrow">Шаблон-заглушка · текст готовит юрист или конструктор документов</p>
+  <h2>Политика обработки персональных данных</h2>
+  <p class="lead">На реальном сайте здесь три отдельных документа: политика конфиденциальности, согласие на обработку персональных данных и оферта. Ниже — что обязательно должно быть в них.</p>
+  <h3>Политика конфиденциальности</h3>
+  <ul><li>Кто оператор данных: ФИО самозанятого или ИП, ИНН, контакт</li><li>Какие данные собираются: имя, телефон, мессенджер, цель занятий</li><li>Зачем: связаться и записать на занятие</li><li>Где хранятся: на серверах в России</li><li>Сроки хранения и как отозвать согласие</li><li>Какие сервисы используются: Яндекс Метрика, CRM</li></ul>
+  <h3>Согласие на обработку персональных данных</h3>
+  <ul><li>Отдельный документ, отдельная галочка в форме</li><li>Перечень данных, целей и действий с ними</li><li>Срок действия и порядок отзыва</li></ul>
+  <h3>Оферта / правила занятий</h3>
+  <ul><li>Стоимость, пакеты, порядок оплаты</li><li>Правила отмены и переноса (за 24 часа)</li><li>Срок действия пакета и условия возврата</li></ul>
+  <p><button class="btn btn-ghost" data-go="site" data-to="book">Вернуться к форме</button></p>
+</div></section>
+</div>
+
+<script>
+const SEGMENTS=[
+  {id:"ege",title:"ЕГЭ",cefr:"B1 → B2+",short:"10–11 класс, цель 80+",price:2200,
+   pain:"Родители боятся низкого балла, в школе нет системной подготовки.",
+   what:["Разбор всех 5 разделов ЕГЭ по демоверсии ФИПИ","Пробники раз в месяц с баллами","Шаблоны для письма и эссе","Отчёт родителю каждый месяц"]},
+  {id:"oge",title:"ОГЭ и школа",cefr:"A2 → B1",short:"5–9 класс, оценки и ОГЭ",price:1900,
+   pain:"Тройки и двойки, ребёнок отстаёт от программы.",
+   what:["Закрываем пробелы в грамматике","Помощь со школьной программой","Подготовка к ОГЭ с 8 класса","Связь с родителем в мессенджере"]},
+  {id:"kids",title:"Дети 7–10 лет",cefr:"Pre-A1 → A1",short:"Игровые уроки по 45 минут",price:1600,
+   pain:"Хочется, чтобы ребёнок полюбил язык с детства.",
+   what:["Уроки по 45 минут в игровой форме","Песни, карточки, интерактивная доска","Чтение и первые фразы","Видео-отчёт родителю"]},
+  {id:"adults",title:"Взрослые и IT",cefr:"A2 → C1",short:"Разговорный, работа, собеседования",price:2400,
+   pain:"Знаю грамматику, но не могу говорить на созвонах.",
+   what:["80% урока — разговорная практика","Лексика под вашу профессию","Подготовка к собеседованию","Разговорный клуб раз в неделю"]}
+];
+const PACKS=[{n:1,disc:0,name:"Разовый урок"},{n:8,disc:.05,name:"Пакет 8 уроков"},{n:16,disc:.10,name:"Пакет 16 уроков"},{n:32,disc:.15,name:"Пакет 32 урока"}];
+const rub=v=>Math.round(v).toLocaleString("ru-RU")+" ₽";
+const $=s=>document.querySelector(s);
+
+/* ---------- views ---------- */
+function go(view,to){
+  ["site","crm","map","legal","cabinet"].forEach(v=>{$("#view-"+v).hidden=v!==view});
+  document.querySelectorAll(".links button").forEach(b=>b.classList.toggle("on",b.dataset.go===view&&view!=="site"));
+  if(view==="crm")renderCRM();
+  if(view==="site"&&to){const el=document.getElementById(to);if(el){el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});return}}
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;e.preventDefault();go(b.dataset.go,b.dataset.to)});
+if(location.hash==="#crm")go("crm");
+
+/* ---------- segments ---------- */
+let curSeg="ege";
+function renderSeg(){
+  $("#seg").innerHTML=SEGMENTS.map(s=>`<button class="${s.id===curSeg?"on":""}" data-seg="${s.id}" aria-pressed="${s.id===curSeg}"><code>${s.cefr}</code><h3>${s.title}</h3><p>${s.short}</p><p>от ${rub(s.price*(1-.15))} за урок</p></button>`).join("");
+  const s=SEGMENTS.find(x=>x.id===curSeg);
+  $("#segdetail").innerHTML=`<div><b>${s.title}: ${s.pain}</b><ul>${s.what.map(w=>`<li>${w}</li>`).join("")}</ul></div><button class="btn btn-main" data-go="site" data-to="book" data-pick="${s.id}">Записаться: ${s.title}</button>`;
+}
+$("#seg").addEventListener("click",e=>{const b=e.target.closest("[data-seg]");if(!b)return;curSeg=b.dataset.seg;renderSeg()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-pick]");if(b)$("#f-seg").value=b.dataset.pick});
+
+/* ---------- prices + calc ---------- */
+function renderPrices(){
+  const base=SEGMENTS.find(s=>s.id==="oge").price;
+  const cards=[PACKS[1],PACKS[2],PACKS[3]];
+  $("#prices-grid").innerHTML=cards.map((p,i)=>{const per=base*(1-p.disc);return `<div class="price ${i===1?"best":""}"><h3>${p.name}${i===1?'<span class="tag">чаще выбирают</span>':""}</h3><div class="sum">${rub(per*p.n)}</div><div class="per">${rub(per)} за урок · скидка ${p.disc*100}% · направление «ОГЭ и школа»</div><ul><li>${p.n} уроков по 60 минут</li><li>Проверка домашних заданий</li>${i>0?"<li>Ежемесячный отчёт и контрольный тест</li>":""}${i===2?"<li>Пробник ОГЭ/ЕГЭ в подарок</li>":""}</ul></div>`}).join("");
+  $("#c-seg").innerHTML=SEGMENTS.map(s=>`<option value="${s.id}">${s.title}</option>`).join("");
+  $("#c-pack").innerHTML=PACKS.map((p,i)=>`<option value="${i}" ${i===2?"selected":""}>${p.name}</option>`).join("");
+  $("#f-seg").innerHTML=SEGMENTS.map(s=>`<option value="${s.id}">${s.title}</option>`).join("");
+  calc();
+}
+function calc(){
+  const s=SEGMENTS.find(x=>x.id===$("#c-seg").value),p=PACKS[+$("#c-pack").value],f=+$("#c-freq").value;
+  const per=s.price*(1-p.disc),weeks=Math.ceil(p.n/f);
+  $("#calcout").innerHTML=`<b>${rub(per*p.n)}</b><span>${rub(per)} за урок${p.disc?` · экономия ${rub(s.price*p.n-per*p.n)}`:""} · хватит примерно на ${weeks} нед.</span>`;
+}
+["#c-seg","#c-pack","#c-freq"].forEach(id=>$(id).addEventListener("change",calc));
+
+/* ---------- quiz ---------- */
+const QUIZ=[
+  {q:"I ___ from Moscow.",o:["am","is","are"],a:0},
+  {q:"She ___ to work every day.",o:["go","goes","going"],a:1},
+  {q:"We ___ dinner when you called.",o:["had","were having","have had"],a:1},
+  {q:"I've lived here ___ 2019.",o:["for","since","from"],a:1},
+  {q:"If I ___ more time, I would travel.",o:["have","had","will have"],a:1},
+  {q:"The report ___ by Friday.",o:["must finish","must be finished","must finished"],a:1},
+  {q:"Выберите синоним к слову <em>reluctant</em>",o:["eager","unwilling","curious"],a:1},
+  {q:"Hardly ___ the room when the phone rang.",o:["I had entered","had I entered","I entered"],a:1}
+];
+let qi=0,qs=0;
+function renderQuiz(){
+  const box=$("#quiz");
+  if(qi>=QUIZ.length){
+    const lv=qs<=1?"A1":qs<=3?"A2":qs<=4?"B1":qs<=6?"B2":qs===7?"C1":"C2";
+    box.innerHTML=`<div class="result"><div class="qhead"><span>Результат</span><span>${qs} из ${QUIZ.length}</span></div><div class="lvl">${lv}</div><p>Ориентировочный уровень. На бесплатной диагностике проверим устную речь и аудирование и составим план.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-main" id="q-book">Записаться с результатом ${lv}</button><button class="btn btn-ghost" id="q-again">Пройти заново</button></div></div>`;
+    $("#q-book").onclick=()=>{$("#f-level").value=lv;go("site","book")};
+    $("#q-again").onclick=()=>{qi=0;qs=0;renderQuiz()};
+    return;
+  }
+  const it=QUIZ[qi];
+  box.innerHTML=`<div class="qhead"><span>Вопрос ${qi+1} из ${QUIZ.length}</span><span>A1 → C2</span></div><div class="qprog"><i style="width:${qi/QUIZ.length*100}%"></i></div><p class="qtext">${it.q}</p><div class="opts">${it.o.map((o,i)=>`<button data-i="${i}">${o}</button>`).join("")}</div>`;
+  box.querySelectorAll(".opts button").forEach(b=>b.onclick=()=>{if(+b.dataset.i===it.a)qs++;qi++;renderQuiz()});
+}
+
+/* ---------- CRM ---------- */
+const STAGES=[["new","Новая заявка"],["contact","Связались"],["trial","Пробный назначен"],["done","Пробный проведён"],["paid","Оплатил пакет"],["lost","Отказ"]];
+const KEY="tutor-crm-demo-v2";
+const SAMPLE=()=>[
+  {id:1,name:"Пример: Ольга (мама Миши)",contact:"@olga_example",seg:"ege",level:"B1",src:"Поиск Яндекса",goal:"ЕГЭ в мае, нужно 80+",stage:"trial",left:null,date:"18.10",about:"Миша любит футбол и играет за школу. Боится устной части",todo:"Напомнить о пробном за день",sample:true},
+  {id:2,name:"Пример: Дмитрий",contact:"+7 900 111-11-11",seg:"adults",level:"B1",src:"Telegram",goal:"Собеседование через 2 месяца",stage:"paid",left:2,date:"02.09",about:"Backend на Go, собеседование в ноябре. День рождения 3 ноября",todo:"Итог пакета + предложить 16 уроков под интервью",sample:true},
+  {id:3,name:"Пример: Ирина (мама Сони)",contact:"+7 900 222-22-22",seg:"oge",level:"A2",src:"Рекомендация",goal:"Тройка в четверти",stage:"paid",left:11,date:"15.09",about:"Соня, 9 класс, кот Барсик. Стесняется говорить, любит рисовать",todo:"Отчёт за октябрь до 31.10",sample:true},
+  {id:4,name:"Пример: Артём",contact:"@artem_example",seg:"adults",level:"",src:"Авито",goal:"Разговорный для путешествий",stage:"lost",left:null,date:"10.10",reason:"дорого",about:"Собирался в Стамбул в декабре",todo:"Через 2 месяца позвать в разговорный клуб",sample:true},
+  {id:5,name:"Пример: Наталья",contact:"+7 900 333-33-33",seg:"kids",level:"",src:"Яндекс Карты / 2ГИС",goal:"Сыну 8 лет, с нуля",stage:"new",left:null,date:"20.10",about:"",todo:"Ответить в течение 15 минут + видео-приветствие",sample:true}
+];
+let leads;
+function load(){try{const r=localStorage.getItem(KEY);leads=r?JSON.parse(r):SAMPLE()}catch(e){leads=SAMPLE()}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(leads))}catch(e){}updateCount()}
+function updateCount(){const n=leads.filter(l=>l.stage==="new").length;$("#crm-count").textContent=n?`(${n})`:""}
+function renderCRM(){
+  const total=leads.length,trial=leads.filter(l=>["done","paid"].includes(l.stage)).length,paid=leads.filter(l=>l.stage==="paid").length,renew=leads.filter(l=>l.stage==="paid"&&l.left!==null&&l.left<=2).length;
+  $("#kpis").innerHTML=`<div class="kpi"><b>${total}</b><span>всего заявок</span></div><div class="kpi"><b>${trial}</b><span>дошли до пробного</span></div><div class="kpi"><b>${total?Math.round(paid/total*100):0}%</b><span>заявка → оплата</span></div><div class="kpi"><b>${renew}</b><span>пора продлевать</span></div>`;
+  $("#board").innerHTML=STAGES.map(([k,t],si)=>{const items=leads.filter(l=>l.stage===k);return `<div class="col"><h3><span>${t}</span><span>${items.length}</span></h3>${items.map(l=>{const seg=SEGMENTS.find(s=>s.id===l.seg);const alert=k==="paid"&&l.left!==null&&l.left<=2;return `<div class="lead-card ${alert?"alert":""}"><b>${esc(l.name)}</b><div class="meta">${esc(l.contact)} · ${l.date}</div><div class="chips"><span class="chip">${seg?seg.title:""}</span>${l.level?`<span class="chip">${l.level}</span>`:""}<span class="chip">${esc(l.src)}</span>${k==="paid"&&l.left!==null?`<span class="chip ${alert?"w":""}">осталось ${l.left} ур.</span>`:""}${l.reason?`<span class="chip w">${esc(l.reason)}</span>`:""}</div>${l.goal?`<div>${esc(l.goal)}</div>`:""}${l.about?`<div class="about"><b style="font-size:12px">О человеке:</b> ${esc(l.about)}</div>`:""}${l.todo?`<div class="todo">Следующее касание: ${esc(l.todo)}</div>`:""}${alert?`<div class="meta" style="color:var(--warn)">Предложить продление пакета</div>`:""}<div class="act">${si>0&&k!=="lost"?`<button data-mv="${l.id}" data-d="-1">← Назад</button>`:""}${si<4?`<button data-mv="${l.id}" data-d="1">Дальше →</button>`:""}${k==="paid"?`<button data-lesson="${l.id}">Провели урок</button><button data-renew="${l.id}">Продлил +8</button>`:""}${k!=="lost"&&k!=="paid"?`<button data-lost="${l.id}">Отказ</button>`:""}${k==="lost"?`<button data-back="${l.id}">Вернуть в работу</button>`:""}</div></div>`}).join("")}</div>`}).join("");
+}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+$("#board").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  const id=+(b.dataset.mv||b.dataset.lesson||b.dataset.renew||b.dataset.lost||b.dataset.back);const l=leads.find(x=>x.id===id);if(!l)return;
+  if(b.dataset.mv){const order=STAGES.map(s=>s[0]).slice(0,5);const i=order.indexOf(l.stage)+ +b.dataset.d;l.stage=order[Math.max(0,Math.min(4,i))];if(l.stage==="paid"&&l.left===null)l.left=8}
+  if(b.dataset.lesson&&l.left>0)l.left--;
+  if(b.dataset.renew)l.left=(l.left||0)+8;
+  if(b.dataset.lost){l.stage="lost";l.reason="причина не указана"}
+  if(b.dataset.back){l.stage="contact";delete l.reason}
+  save();renderCRM();
+});
+$("#crm-reset").onclick=()=>{leads=SAMPLE();save();renderCRM()};
+
+/* ---------- form ---------- */
+$("#lead-form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#f-name").value.trim(),contact=$("#f-contact").value.trim(),err=$("#f-err");
+  if(!name){err.textContent="Укажите имя, чтобы я знала, как к вам обращаться.";$("#f-name").focus();return}
+  if(contact.length<5){err.textContent="Укажите телефон или ник в Telegram, чтобы я могла ответить.";$("#f-contact").focus();return}
+  if(!$("#f-pd").checked){err.textContent="Чтобы отправить заявку, отметьте согласие на обработку персональных данных.";$("#f-pd").focus();return}
+  err.textContent="";
+  const d=new Date();
+  leads.push({id:Date.now(),name,contact,seg:$("#f-seg").value,level:$("#f-level").value,src:$("#f-src").value,goal:$("#f-goal").value.trim(),stage:"new",left:null,about:"",todo:"Ответить в течение 15 минут + видео-приветствие",date:String(d.getDate()).padStart(2,"0")+"."+String(d.getMonth()+1).padStart(2,"0")});
+  save();
+  const ok=$("#f-ok");ok.hidden=false;ok.className="ok";
+  ok.innerHTML=`<b>Заявка принята.</b> На реальном сайте здесь будет «Спасибо, отвечу в течение 15 минут». В прототипе заявка добавлена в <button type="button" class="linkbtn" data-go="crm">демо-CRM</button>.`;
+  e.target.querySelectorAll("input:not([type=checkbox]),textarea").forEach(i=>i.value="");
+});
+
+/* ---------- sitemap ---------- */
+const MAP=[["/","Главная","лендинг со всеми блоками"],["/ege","ЕГЭ по английскому","подготовка к ЕГЭ"],["/oge","ОГЭ по английскому","подготовка к ОГЭ, 9 класс"],["/shkolnikam","Школьникам","помощь со школьной программой"],["/deti","Детям 7–10 лет","английский для детей онлайн"],["/vzroslym","Взрослым","разговорный английский"],["/it","Для IT и работы","английский для айтишников"],["/ceny","Цены и пакеты","стоимость занятий"],["/obo-mne","Обо мне","опыт, дипломы"],["/otzyvy","Отзывы и результаты","баллы, истории учеников"],["/test","Тест уровня","определить уровень английского"],["/blog","Блог","статьи под SEO-запросы"],["/kontakty","Контакты и запись","форма, мессенджеры"],["/privacy","Политика конфиденциальности","152-ФЗ"],["/oferta","Оферта и согласие","правила, согласие на ПДн"]];
+$("#sitemap").innerHTML=MAP.map(([u,t,q])=>`<div><code>${u}</code><b>${t}</b><div style="color:var(--muted);font-size:13px">${q}</div></div>`).join("");
+
+/* ---------- cabinet ---------- */
+$("#hw").addEventListener("change",()=>{const all=[...document.querySelectorAll("#hw input")].every(i=>i.checked);$("#hw-msg").textContent=all?"Всё сделано! Анна получила уведомление и проверит до урока.":""});
+$("#mood").addEventListener("click",e=>{const b=e.target.closest("[data-m]");if(!b)return;document.querySelectorAll("#mood button").forEach(x=>x.classList.toggle("on",x===b));$("#mood-msg").textContent=b.dataset.m==="Было интересно"?"Спасибо! Анна продолжит в том же духе.":"Спасибо, что сказали. Анна напишет вам и подстроит следующий урок."});
+$("#cab-move").onclick=()=>{$("#cab-move-msg").textContent="Здесь откроются свободные окна. Перенос бесплатный, если до урока больше 24 часов."};
+let frozen=false;
+$("#cab-freeze").onclick=()=>{frozen=!frozen;$("#cab-freeze").textContent=frozen?"Разморозить пакет":"Заморозить пакет";$("#freeze-msg").textContent=frozen?"Пакет заморожен на 4 недели, 3 урока сохранены. Анна напишет, когда будет пора вернуться.":""};
+$("#ref-copy").onclick=()=>{const t=$("#ref-code").textContent;const done=()=>{$("#ref-copy").textContent="Скопировано"};try{navigator.clipboard.writeText(t).then(done,()=>{getSelection().selectAllChildren($("#ref-code"))})}catch(e){getSelection().selectAllChildren($("#ref-code"))}};
+
+load();renderSeg();renderPrices();renderQuiz();updateCount();
+</script>
+
+</body>
+</html>
